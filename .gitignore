@@ -24,3 +24,17 @@ DerivedData
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 #Pods/
+
+# Mac OS Files
+.DS_Store
+
+# Node
+node_modules/
+
+# Swap
+*.swp
+
+# Istanbul
+coverage/
+
+
