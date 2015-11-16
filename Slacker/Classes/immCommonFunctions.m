@@ -40,8 +40,8 @@
 
 
 
-+ (void) sendCordovaError:(NSString *)errorMessage
-{
+//+ (void) sendCordovaError:(NSString *)errorMessage
+//{
 
  
   //  CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
@@ -49,5 +49,5 @@
 
     
     //[CDVPluginHandleOpenURLNotification commandDelegate sendPluginResult:pluginResult callbackId:currentCallBackID ];
-}
+//}
 @end
