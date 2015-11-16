@@ -111,7 +111,7 @@
 		C6A2F0FA1BF78CB600899210 /* SlackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A2F0FC1BF78CB600899210 /* SlackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlackerTests.m; sourceTree = "<group>"; };
 		C6A2F0FE1BF78CB600899210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6BBE4FB1BF7D25000D8D365 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../../../../../Library/Developer/Xcode/DerivedData/CordovaLib-byrykngxnejxjofbnamopageaqrf/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
+		C6BBE4FB1BF7D25000D8D365 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../Library/Developer/Xcode/DerivedData/CordovaLib-byrykngxnejxjofbnamopageaqrf/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -527,6 +527,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Slacker/Slacker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -556,6 +557,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Slacker/Slacker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
