@@ -15,6 +15,6 @@
 
 + (NSString*) getClientID;
 
-+ (void) sendCordovaError: (NSString *) errorMessage;
+//+ (void) sendCordovaError: (NSString *) errorMessage;
 
 @end

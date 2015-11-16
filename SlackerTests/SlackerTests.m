@@ -38,11 +38,19 @@
     XCTAssertNotNil([immCommonFunctions getClientID], @"Client ID is present");
 }
 
+-(void)testmakeRESTAPICall
+{
+    XCTAssertNoThrow([immCommonFunctions makeRestAPICall:@"https://slack.com/api//oauth.access?client_id=10020492535.14066700832&client_secret=75d676a163b2e485f8428a1b0d1f710c&code=10020492535.14683910482.d85f4da2bd" ]);
+}
+
+
+
 -(void)testslackAuthenticate {
     
     immSlackClient *slackClient = [immSlackClient alloc];
     XCTAssertNoThrow([slackClient slackAuthenticate], @"Slack authenticate works");
 }
+
 
 -(void)testcordovaSlackAuthenticate {
     
@@ -50,6 +58,13 @@
     CDVInvokedUrlCommand  *command = [CDVInvokedUrlCommand alloc];
     XCTAssertNoThrow([slackClient cordovaSlackAuthenticate:command], @"Slack authenticate works");
 }
+
+-(void)testgetSlackAccessCode {
+    
+    immSlackClient *slackClient = [immSlackClient alloc];
+    XCTAssertNoThrow([slackClient getSlackAccessCode:@"10020492535.14686303506.470091edff"]);
+}
+
 
 
 - (void)testPerformanceExample {

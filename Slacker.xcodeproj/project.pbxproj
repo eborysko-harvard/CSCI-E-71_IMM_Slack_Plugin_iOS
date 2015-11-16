@@ -40,7 +40,6 @@
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		C647A2B01BF57B1300569A1D /* immCommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C647A2AF1BF57B1300569A1D /* immCommonFunctions.m */; };
 		C69C581A1BF43FF1002ADF01 /* immSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C69C58191BF43FF1002ADF01 /* immSlackClient.m */; };
-		C6A2F0EF1BF78BBF00899210 /* SlackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A2F0EE1BF78BBF00899210 /* SlackerUITests.m */; };
 		C6A2F0FD1BF78CB600899210 /* SlackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A2F0FC1BF78CB600899210 /* SlackerTests.m */; };
 		C6BBE4FC1BF7D25000D8D365 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BBE4FB1BF7D25000D8D365 /* libCordova.a */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
@@ -106,12 +105,11 @@
 		C69C58181BF43FF1002ADF01 /* immSlackClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = immSlackClient.h; sourceTree = "<group>"; };
 		C69C58191BF43FF1002ADF01 /* immSlackClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = immSlackClient.m; sourceTree = "<group>"; };
 		C6A2F0EC1BF78BBF00899210 /* SlackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6A2F0EE1BF78BBF00899210 /* SlackerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlackerUITests.m; sourceTree = "<group>"; };
 		C6A2F0F01BF78BBF00899210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A2F0FA1BF78CB600899210 /* SlackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A2F0FC1BF78CB600899210 /* SlackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlackerTests.m; sourceTree = "<group>"; };
 		C6A2F0FE1BF78CB600899210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6BBE4FB1BF7D25000D8D365 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../../../../../Library/Developer/Xcode/DerivedData/CordovaLib-byrykngxnejxjofbnamopageaqrf/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
+		C6BBE4FB1BF7D25000D8D365 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = "../Library/Developer/Xcode/DerivedData/CordovaLib-byrykngxnejxjofbnamopageaqrf/Build/Products/Debug-iphoneos/libCordova.a"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 		C6A2F0ED1BF78BBF00899210 /* SlackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C6A2F0EE1BF78BBF00899210 /* SlackerUITests.m */,
 				C6A2F0F01BF78BBF00899210 /* Info.plist */,
 			);
 			path = SlackerUITests;
@@ -485,7 +482,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6A2F0EF1BF78BBF00899210 /* SlackerUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +512,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -527,6 +523,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Slacker/Slacker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -556,6 +553,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Slacker/Slacker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
