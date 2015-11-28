@@ -83,13 +83,20 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 
 - (NSString *) makeRestAPICall : (NSString*) reqURL
 {
-    NSURLRequest *Request = [NSURLRequest requestWithURL:[NSURL URLWithString: reqURL]];
-    NSURLResponse *resp = nil;
-    NSError *error = nil;
-    NSData *response = [NSURLConnection sendSynchronousRequest: Request returningResponse: &resp error: &error];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",responseString);
-    return responseString;
+
+    __block NSString *response = nil;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:[NSURL URLWithString:reqURL]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *resp,
+                                NSError *error) {
+                response =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+            }] resume];
+
+    return response;
+
 }
 
 
