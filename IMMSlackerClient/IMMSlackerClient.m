@@ -67,6 +67,18 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
 }
 
+-(BOOL) checkPresence:(NSString *)userID
+{
+    NSString *restCallString = [NSString stringWithFormat:@"%@/users.getPresence?token=%@&user=%@", slackAPIURL, self.SlackAccessToken , userID ];
+    
+    NSString *responseString = [self makeRestAPICall: restCallString];
+    NSData* responseData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *jsonArray=[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+    
+    return [jsonArray objectForKey:@"presence"];
+}
+
 
 
 - (NSString *) makeRestAPICall : (NSString*) reqURL

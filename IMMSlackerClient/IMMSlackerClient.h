@@ -22,6 +22,7 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 
 @property (nonatomic, assign) NSString* SlackClientID;
 @property (nonatomic, assign) NSString* SlackClientSecret;
+@property (nonatomic, strong) NSString* SlackAccessToken;
 
 - (NSURLRequest* ) slackAuthenticateURL:(NSDictionary* ) options;
 
@@ -30,6 +31,9 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 - (NSString* ) makeRestAPICall : (NSString*) reqURL;
 
 - (NSString*) getSlackAccessCode:(NSString *) slackCode;
+
+-(BOOL) checkPresence : (NSString* ) userID;
+
 
 @end
 
