@@ -28,7 +28,7 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 
 - (BOOL) checkTokenValidity:(NSString* ) accessToken;
 
-- (NSString* ) makeRestAPICall : (NSString*) reqURL;
+- (NSDictionary* ) makeRestAPICall : (NSString*) reqURL;
 
 - (NSString*) getSlackAccessCode:(NSString *) slackCode;
 
