@@ -26,14 +26,17 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 
 - (NSURLRequest* ) slackAuthenticateURL:(NSDictionary* ) options;
 
-- (BOOL) checkTokenValidity:(NSString* ) accessToken;
+- (BOOL) checkTokenValidity;
 
 - (NSDictionary* ) makeRestAPICall : (NSString*) reqURL;
 
-- (NSString*) getSlackAccessCode:(NSString *) slackCode;
+- (void) setSlackAccessCode:(NSString *) slackCode;
 
 -(BOOL) checkPresence : (NSString* ) userID;
 
+-(void) postMessage : (NSString* ) channelID : (NSString* ) message;
+
++ (id)sharedInstance;
 
 @end
 

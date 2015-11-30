@@ -25,18 +25,17 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
     NSString *slackAPIURL = [NSString  stringWithFormat:@"https://slack.com/oauth/authorize?client_id=%@&scope=%@&", self.SlackClientID,scope];
     NSURLRequest *slackRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:slackAPIURL]];
-    
     return slackRequest;
     
 }
 
 
-- (BOOL) checkTokenValidity:(NSString *)accessToken
+- (BOOL) checkTokenValidity
 {
-    if (accessToken)
+    if (self.SlackAccessToken)
     {
         
-        NSString *restCallString = [NSString stringWithFormat:@"%@/auth.test?token=%@", slackAPIURL, accessToken];
+        NSString *restCallString = [NSString stringWithFormat:@"%@/auth.test?token=%@", slackAPIURL, self.SlackAccessToken];
         
         NSDictionary *responseData = [self makeRestAPICall: restCallString];
         return [responseData objectForKey:@"ok"];
@@ -47,15 +46,21 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 }
 
 
-- (NSString*) getSlackAccessCode:(NSString *) slackCode
+- (void) setSlackAccessCode:(NSString *) slackCode
 {
     
-    
-    NSString *restCallString = [NSString stringWithFormat:@"%@/oauth.access?client_id=%@&client_secret=%@&code=%@", slackAPIURL , self.SlackClientID , self.SlackClientSecret, slackCode ];
-    
-    NSDictionary *responseData = [self makeRestAPICall: restCallString];
-    
-    return  [responseData objectForKey:@"access_token"];
+    @try
+    {
+        NSString *restCallString = [NSString stringWithFormat:@"%@/oauth.access?client_id=%@&client_secret=%@&code=%@", slackAPIURL , self.SlackClientID , self.SlackClientSecret, slackCode ];
+        
+        NSDictionary *responseData = [self makeRestAPICall: restCallString];
+        
+        self.SlackAccessToken  = [responseData objectForKey:@"access_token"];
+    }
+    @catch (NSException *exception) {
+        @throw exception;
+        
+    }
 }
 
 -(BOOL) checkPresence:(NSString *)userID
@@ -68,28 +73,56 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 }
 
 
+- (void) postMessage:(NSString *)channelID :(NSString *)message
+{
+    NSString *restCallString = [NSString stringWithFormat:@"%@/chat.postMessage?token=%@&channel=%@&text=%@", slackAPIURL, self.SlackAccessToken , channelID, message ];
+    
+    [self makeRestAPICall: restCallString];
+    
+}
+
 
 - (NSDictionary *) makeRestAPICall : (NSString*) reqURL
 {
-    __block NSDictionary *response = nil;
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    @try {
+        __block NSDictionary *response = nil;
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
+                                                completionHandler:^(NSData *data,
+                                                                    NSURLResponse *resp,
+                                                                    NSError *error) {
+                                                    if(!error)
+                                                        response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                    else
+                                                        @throw error;
+                                                    dispatch_semaphore_signal(semaphore);
+                                                    
+                                                }];
+        [dataTask resume];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        return response;
+    }
+    @catch (NSError *exception) {
+        @throw exception;
+    }
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
-                                            completionHandler:^(NSData *data,
-                                                                NSURLResponse *resp,
-                                                                NSError *error) {
-                                                if(!error)
-                                                    response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                else
-                                                    @throw error;
-                                                dispatch_semaphore_signal(semaphore);
-                                                
-                                            }];
-    [dataTask resume];
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    return response;
 }
 
++ (id)sharedInstance
+{
+    //This will ensure that only one instance of the IMMSlackerClient object exists
+
+    static dispatch_once_t p = 0;
+    
+    __strong static id _sharedObject = nil;
+    
+    dispatch_once(&p, ^{
+        _sharedObject = [[self alloc] init];
+    });
+    
+    return _sharedObject;
+}
 
 @end
