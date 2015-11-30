@@ -24,7 +24,7 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 @property (nonatomic, assign) NSString* SlackClientSecret;
 @property (nonatomic, strong) NSString* SlackAccessToken;
 
-- (NSURLRequest* ) slackAuthenticateURL:(NSDictionary* ) options;
+- (NSURLRequest* ) slackAuthenticateURL:(NSArray* ) options;
 
 - (BOOL) checkTokenValidity;
 

@@ -13,14 +13,18 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 
 @synthesize SlackClientID;
 
-- (NSURLRequest* ) slackAuthenticateURL:(NSDictionary* ) options
+- (NSURLRequest* ) slackAuthenticateURL:(NSArray* ) options
 {
     
-    NSString *scope = @"read";
-    
-    if(!options)
+    NSString *scope = @"channels:read";
+    if(options)
     {
-        scope = [options objectForKey:@"scopes"];
+        NSDictionary *optionsSelected = [options objectAtIndex:0];
+        
+        if(optionsSelected )
+        {
+            scope = [optionsSelected objectForKey:@"scopes"];
+        }
     }
     
     NSString *slackAPIURL = [NSString  stringWithFormat:@"https://slack.com/oauth/authorize?client_id=%@&scope=%@&", self.SlackClientID,scope];
@@ -75,7 +79,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 
 - (void) postMessage:(NSString *)channelID :(NSString *)message
 {
-    NSString *restCallString = [NSString stringWithFormat:@"%@/chat.postMessage?token=%@&channel=%@&text=%@", slackAPIURL, self.SlackAccessToken , channelID, message ];
+    NSString *restCallString = [NSString stringWithFormat:@"%@/chat.postMessage?token=%@&channel=%@&text=%@&as_user=true", slackAPIURL, self.SlackAccessToken , channelID, [ message stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
     
     [self makeRestAPICall: restCallString];
     
