@@ -42,7 +42,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
         NSString *restCallString = [NSString stringWithFormat:@"%@/auth.test?token=%@", slackAPIURL, self.SlackAccessToken];
         
         NSDictionary *responseData = [self makeRestAPICall: restCallString];
-        return [responseData objectForKey:@"ok"];
+        return [[responseData objectForKey:@"ok"]boolValue];
     }
     
     return NO;
@@ -73,7 +73,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
     NSDictionary *responseData = [self makeRestAPICall: restCallString];
     
-    return [responseData objectForKey:@"presence"];
+    return [[responseData objectForKey:@"presence"]boolValue];
 }
 
 
@@ -99,8 +99,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
                                                                     NSError *error) {
                                                     if(!error)
                                                         response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                    else
-                                                        @throw error;
+                                                
                                                     dispatch_semaphore_signal(semaphore);
                                                     
                                                 }];

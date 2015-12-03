@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C679DCB31C0E9C5F00854E64 /* IMMSlackerClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C679DCB21C0E9C5F00854E64 /* IMMSlackerClientTests.m */; };
+		C679DCB51C0E9C5F00854E64 /* IMMSlackerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A61D5C1C06D0AF00B83466 /* IMMSlackerClient.framework */; };
 		C6A61D601C06D0AF00B83466 /* IMMSlackerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A61D5F1C06D0AF00B83466 /* IMMSlackerClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6A61D711C06D1CB00B83466 /* IMMSlackerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A61D701C06D1CB00B83466 /* IMMSlackerClient.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C679DCB61C0E9C5F00854E64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6A61D531C06D0AF00B83466 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6A61D5B1C06D0AF00B83466;
+			remoteInfo = IMMSlackerClient;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C679DCB01C0E9C5F00854E64 /* IMMSlackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMMSlackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C679DCB21C0E9C5F00854E64 /* IMMSlackerClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMMSlackerClientTests.m; sourceTree = "<group>"; };
+		C679DCB41C0E9C5F00854E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A61D5C1C06D0AF00B83466 /* IMMSlackerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMMSlackerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A61D5F1C06D0AF00B83466 /* IMMSlackerClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMMSlackerClient.h; sourceTree = "<group>"; };
 		C6A61D611C06D0AF00B83466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +34,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C679DCAD1C0E9C5F00854E64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C679DCB51C0E9C5F00854E64 /* IMMSlackerClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6A61D581C06D0AF00B83466 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C679DCB11C0E9C5F00854E64 /* IMMSlackerClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				C679DCB21C0E9C5F00854E64 /* IMMSlackerClientTests.m */,
+				C679DCB41C0E9C5F00854E64 /* Info.plist */,
+			);
+			path = IMMSlackerClientTests;
+			sourceTree = "<group>";
+		};
 		C6A61D521C06D0AF00B83466 = {
 			isa = PBXGroup;
 			children = (
 				C6A61D5E1C06D0AF00B83466 /* IMMSlackerClient */,
+				C679DCB11C0E9C5F00854E64 /* IMMSlackerClientTests */,
 				C6A61D5D1C06D0AF00B83466 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				C6A61D5C1C06D0AF00B83466 /* IMMSlackerClient.framework */,
+				C679DCB01C0E9C5F00854E64 /* IMMSlackerClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +103,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C679DCAF1C0E9C5F00854E64 /* IMMSlackerClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C679DCB81C0E9C5F00854E64 /* Build configuration list for PBXNativeTarget "IMMSlackerClientTests" */;
+			buildPhases = (
+				C679DCAC1C0E9C5F00854E64 /* Sources */,
+				C679DCAD1C0E9C5F00854E64 /* Frameworks */,
+				C679DCAE1C0E9C5F00854E64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C679DCB71C0E9C5F00854E64 /* PBXTargetDependency */,
+			);
+			name = IMMSlackerClientTests;
+			productName = IMMSlackerClientTests;
+			productReference = C679DCB01C0E9C5F00854E64 /* IMMSlackerClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C6A61D5B1C06D0AF00B83466 /* IMMSlackerClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6A61D641C06D0AF00B83466 /* Build configuration list for PBXNativeTarget "IMMSlackerClient" */;
@@ -96,6 +148,9 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = IMM;
 				TargetAttributes = {
+					C679DCAF1C0E9C5F00854E64 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 					C6A61D5B1C06D0AF00B83466 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
@@ -114,11 +169,19 @@
 			projectRoot = "";
 			targets = (
 				C6A61D5B1C06D0AF00B83466 /* IMMSlackerClient */,
+				C679DCAF1C0E9C5F00854E64 /* IMMSlackerClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C679DCAE1C0E9C5F00854E64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6A61D5A1C06D0AF00B83466 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +192,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C679DCAC1C0E9C5F00854E64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C679DCB31C0E9C5F00854E64 /* IMMSlackerClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6A61D571C06D0AF00B83466 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,7 +210,35 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C679DCB71C0E9C5F00854E64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6A61D5B1C06D0AF00B83466 /* IMMSlackerClient */;
+			targetProxy = C679DCB61C0E9C5F00854E64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C679DCB91C0E9C5F00854E64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = IMMSlackerClientTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cscie71.imm.app.IMMSlackerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C679DCBA1C0E9C5F00854E64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = IMMSlackerClientTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cscie71.imm.app.IMMSlackerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C6A61D621C06D0AF00B83466 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +362,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C679DCB81C0E9C5F00854E64 /* Build configuration list for PBXNativeTarget "IMMSlackerClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C679DCB91C0E9C5F00854E64 /* Debug */,
+				C679DCBA1C0E9C5F00854E64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C6A61D561C06D0AF00B83466 /* Build configuration list for PBXProject "IMMSlackerClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
