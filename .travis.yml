@@ -1,6 +1,4 @@
 language: objective-c
-xcode_project: IMMSlackerClient.xcodeproj # path to your xcodeproj folder
-xcode_scheme: IMMSlackerClient
 
 #addons:
 #  sauce_connect: true
@@ -25,6 +23,8 @@ install:
 before_script:
 # Commands to excecute before running tests
   - echo "Before script stage"
+script:
+  - xctool clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -scheme "IMMSlackerClient" test -sdk iphonesimulator
 
 # script:
 # Run tests
