@@ -14,6 +14,8 @@ before_install:
 
 install:
   - echo "Install stage"
+#  - brew update
+#  - brew upgrade xctool
 #  - npm i
   - echo "END - install stage"
 #  - sudo npm install -g cordova
@@ -23,8 +25,8 @@ install:
 before_script:
 # Commands to excecute before running tests
   - echo "Before script stage"
-
-# script:
+script:
+ - xcodebuild -scheme IMMSlackerClient  -sdk iphonesimulator  test | xcpretty --color
 # Run tests
 #  - echo "Running tests"
 #  - npm test
