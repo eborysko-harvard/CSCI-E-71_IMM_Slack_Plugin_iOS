@@ -19,7 +19,7 @@ export ALREADYINVOKED="true"
 
 # make sure the output directory exists
 #mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
-mkdir -p "${UNIVERSAL_OUTPUTFOLDER}/${EXECUTABLE}.framework"
+mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
 
 echo "Building for iPhoneSimulator"
 xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" clean build
@@ -30,14 +30,14 @@ xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuratio
 
 # Step 1. Copy the framework structure (from iphoneos build) to the universal folder
 #echo "Copying to output folder"
-cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/" "${UNIVERSAL_OUTPUTFOLDER}/"
+cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/" "${UNIVERSAL_OUTPUTFOLDER}"
 
 echo "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${EXECUTABLE_PATH}"
 echo "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${EXECUTABLE_PATH}"
 
 # Step 2. Create universal binary file using lipo and place the combined executable in the copied framework directory
 echo "Combining executables"
-lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${EXECUTABLE}.framework/${EXECUTABLE}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${EXECUTABLE_PATH}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${EXECUTABLE_PATH}"
+lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${EXECUTABLE_PATH}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${EXECUTABLE_PATH}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${EXECUTABLE_PATH}"
 
 # Step 3. Convenience step to copy the framework to the project's directory
 #echo "Copying to project dir"
