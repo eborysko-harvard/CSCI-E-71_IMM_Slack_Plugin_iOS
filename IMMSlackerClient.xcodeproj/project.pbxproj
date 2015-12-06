@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C62C63861C149AD20047E537 /* IMMSlackerClient.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A61D5C1C06D0AF00B83466 /* IMMSlackerClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C679DCB31C0E9C5F00854E64 /* IMMSlackerClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C679DCB21C0E9C5F00854E64 /* IMMSlackerClientTests.m */; };
 		C679DCB51C0E9C5F00854E64 /* IMMSlackerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A61D5C1C06D0AF00B83466 /* IMMSlackerClient.framework */; };
 		C6A61D601C06D0AF00B83466 /* IMMSlackerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A61D5F1C06D0AF00B83466 /* IMMSlackerClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,6 +23,19 @@
 			remoteInfo = IMMSlackerClient;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C62C63851C149AC60047E537 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C62C63861C149AD20047E537 /* IMMSlackerClient.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C679DCB01C0E9C5F00854E64 /* IMMSlackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMMSlackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +124,7 @@
 				C679DCAC1C0E9C5F00854E64 /* Sources */,
 				C679DCAD1C0E9C5F00854E64 /* Frameworks */,
 				C679DCAE1C0E9C5F00854E64 /* Resources */,
+				C62C63851C149AC60047E537 /* CopyFiles */,
 			);
 			buildRules = (
 			);
