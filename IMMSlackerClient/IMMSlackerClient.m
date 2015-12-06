@@ -88,36 +88,35 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 
 - (NSDictionary *) makeRestAPICall : (NSString*) reqURL
 {
-    __block NSDictionary *response = nil;
-    __block NSError *responseError = nil;
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
-                                            completionHandler:^(NSData *data,
-                                                                NSURLResponse *resp,
-                                                                NSError *error) {
-                                                if(!error)
-                                                    response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                else
-                                                    responseError = error;
+    @try {
+        __block NSDictionary *response = nil;
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
+                                                completionHandler:^(NSData *data,
+                                                                    NSURLResponse *resp,
+                                                                    NSError *error) {
+                                                    if(!error)
+                                                        response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                                 
-                                                dispatch_semaphore_signal(semaphore);
-                                                
-                                            }];
-    [dataTask resume];
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    if (responseError) {
-        @throw responseError;
+                                                    dispatch_semaphore_signal(semaphore);
+                                                    
+                                                }];
+        [dataTask resume];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        return response;
     }
-    return response;
+    @catch (NSError *exception) {
+        @throw exception;
+    }
     
 }
 
 + (id)sharedInstance
 {
     //This will ensure that only one instance of the IMMSlackerClient object exists
-    
+
     static dispatch_once_t p = 0;
     
     __strong static id _sharedObject = nil;
