@@ -1,6 +1,6 @@
 language: objective-c
 xcode_project: IMMSlackerClient.xcodeproj # path to your xcodeproj folder
-xcode_scheme: MyNewProjectTests
+xcode_scheme: IMMSlackerClient
 
 #addons:
 #  sauce_connect: true
