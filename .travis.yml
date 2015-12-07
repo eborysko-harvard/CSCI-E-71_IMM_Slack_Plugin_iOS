@@ -1,4 +1,7 @@
+osx_image: xcode7.1
 language: objective-c
+xcode_workspace: IMMSlackerClient.xcworkspace
+xcode_scheme: IMMSlackerClient
 
 #addons:
 #  sauce_connect: true
@@ -9,6 +12,9 @@ before_install:
   - echo "Before install stage"
 #  - nvm install 4.1.1
 #  - nvm use 4.1.1
+  - sudo easy_install cpp-coveralls
+  - brew update
+  - brew install gcovr
   - node -v
   - echo "END - Before install stage"
 
@@ -24,10 +30,10 @@ before_script:
 # Commands to excecute before running tests
   - echo "Before script stage"
 
-# script:
+script:
 # Run tests
-#  - echo "Running tests"
-#  - npm test
+   - echo "Running tests"
+   - fastlane test
 #  - echo "Starting build"
 #  - npm run build-ios
 #  - cd TestCIiOS
@@ -36,6 +42,8 @@ before_script:
 after_success:
 # You can do thing after success
   - echo "Build success"
+  - coveralls --verbose
+
 
 after_failure:
 # What if your test fails?
