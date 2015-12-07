@@ -1,1 +1,2 @@
 # CSCI-E-71_IMM_Slack_Plugin_iOS
+[![Build Status](https://travis-ci.org/InternationalMixMob/CSCI-E-71_IMM_Slacker_Client_iOS.svg)](https://travis-ci.org/InternationalMixMob/CSCI-E-71_IMM_Slacker_Client_iOS) [![ReviewNinja](https://app.review.ninja/45960688/badge)](https://app.review.ninja/InternationalMixMob/CSCI-E-71_IMM_Slacker_Client_iOS) [![Coverage Status](https://coveralls.io/repos/InternationalMixMob/CSCI-E-71_IMM_Slacker_Client_iOS/badge.svg?branch=master&service=github)](https://coveralls.io/github/InternationalMixMob/CSCI-E-71_IMM_Slacker_Client_iOS?branch=master)
