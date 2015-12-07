@@ -79,7 +79,7 @@ platform :ios do
       exclude: "'.*Test.*''",
       output: "build/code-coverage/report.xml"
     )
-    sh "coveralls"
+    # sh "coveralls"
     # You can also use other beta testing services here
   end
 

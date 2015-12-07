@@ -42,6 +42,8 @@ script:
 after_success:
 # You can do thing after success
   - echo "Build success"
+  - coveralls --verbose
+
 
 after_failure:
 # What if your test fails?
