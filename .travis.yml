@@ -12,6 +12,9 @@ before_install:
   - echo "Before install stage"
 #  - nvm install 4.1.1
 #  - nvm use 4.1.1
+  - sudo easy_install cpp-coveralls
+  - brew update
+  - brew install gcovr
   - node -v
   - echo "END - Before install stage"
 
