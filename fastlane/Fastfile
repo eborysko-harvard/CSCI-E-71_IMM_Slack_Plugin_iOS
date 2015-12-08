@@ -62,12 +62,10 @@ platform :ios do
 
 #duplicate effort but xctool does not seem load the simulator so only some tests go throught
     xctool :test, [
-      "--only", "IMMSlackerClientTests:IMMSlackerClientTests:testSlackAuthenticateURL",
       "--project", "'IMMSlackerClient.xcodeproj'",
       "--scheme", "'IMMSlackerClientXCtoolTest'",
       "--configuration", "Debug",
       "--sdk", "iphonesimulator",
-      "--destination", "'platform=iOS Simulator,name=iPhone 6,OS=9.1' ",
       "OBJROOT=./build",
       "ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES"
     ].join(" ")
