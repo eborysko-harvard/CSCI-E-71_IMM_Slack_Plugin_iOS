@@ -85,6 +85,16 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
 }
 
+- (NSDictionary *) getChannelList;
+{
+    
+    NSString *restCallString = [NSString stringWithFormat:@"%@/channels.list?token=%@&", slackAPIURL, self.SlackAccessToken ];
+    
+    NSDictionary *responseData = [self makeRestAPICall: restCallString];
+    
+    return [responseData objectForKey:@"channels"];
+
+}
 
 - (NSDictionary *) makeRestAPICall : (NSString*) reqURL
 {
@@ -113,6 +123,8 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     return response;
     
 }
+
+
 
 + (id)sharedInstance
 {
