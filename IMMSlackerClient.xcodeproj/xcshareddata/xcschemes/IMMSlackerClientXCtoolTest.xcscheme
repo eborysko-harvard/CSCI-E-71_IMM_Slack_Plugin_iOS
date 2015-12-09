@@ -49,6 +49,12 @@
                   Identifier = "IMMSlackerClientTests/testGetChannelList">
                </Test>
                <Test
+                  Identifier = "IMMSlackerClientTests/testGetChannelListFalse">
+               </Test>
+               <Test
+                  Identifier = "IMMSlackerClientTests/testGetChannelListTrue">
+               </Test>
+               <Test
                   Identifier = "IMMSlackerClientTests/testPostMessage">
                </Test>
                <Test

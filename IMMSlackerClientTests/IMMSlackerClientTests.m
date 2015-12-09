@@ -108,12 +108,20 @@
     XCTAssertThrows([immSlackerClient makeRestAPICall:@"C0F6U0R5E"] );
 }
 
--(void)testGetChannelList
+-(void)testGetChannelListTrue
 {
     IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
     immSlackerClient.SlackAccessToken =  @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
                                           
-    XCTAssertNoThrow([immSlackerClient getChannelList]);
+    XCTAssertNoThrow([immSlackerClient getChannelList:YES]);
+}
+
+-(void)testGetChannelListFalse
+{
+    IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
+    immSlackerClient.SlackAccessToken =  @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
+    
+    XCTAssertNoThrow([immSlackerClient getChannelList:NO]);
 }
 
 @end
