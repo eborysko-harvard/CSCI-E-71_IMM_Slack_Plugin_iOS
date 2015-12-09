@@ -85,10 +85,13 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
 }
 
-- (NSDictionary *) getChannelList;
+- (NSDictionary *) getChannelList:(BOOL)excludeArchived
 {
+    NSString *exclude = @"0";
+    if(excludeArchived)
+        exclude = @"1";
     
-    NSString *restCallString = [NSString stringWithFormat:@"%@/channels.list?token=%@&", slackAPIURL, self.SlackAccessToken ];
+        NSString *restCallString = [NSString stringWithFormat:@"%@/channels.list?token=%@&exclude_archived=%@", slackAPIURL, self.SlackAccessToken, exclude ];
     
     NSDictionary *responseData = [self makeRestAPICall: restCallString];
     
