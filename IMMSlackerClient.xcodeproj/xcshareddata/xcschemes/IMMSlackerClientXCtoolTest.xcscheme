@@ -46,6 +46,9 @@
                   Identifier = "IMMSlackerClientTests/testCheckTokenValidityTrue">
                </Test>
                <Test
+                  Identifier = "IMMSlackerClientTests/testGetChannelList">
+               </Test>
+               <Test
                   Identifier = "IMMSlackerClientTests/testPostMessage">
                </Test>
                <Test
