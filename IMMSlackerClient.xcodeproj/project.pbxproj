@@ -153,7 +153,6 @@
 					};
 					C6A61D5B1C06D0AF00B83466 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = GH8FXS74P8;
 					};
 				};
 			};
