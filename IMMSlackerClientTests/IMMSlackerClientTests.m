@@ -105,7 +105,7 @@
     immSlackerClient.SlackAccessToken = @"xoxp-10020492535-10633604503-14277704819-ff5c0a80c0";
     
     
-    XCTAssertThrows([immSlackerClient makeRestAPICall:@"C0F6U0R5E"] );
+    XCTAssertThrows([immSlackerClient makeRestAPICall:@"INVALIDURLTEST"] );
 }
 
 -(void)testGetChannelListTrue
