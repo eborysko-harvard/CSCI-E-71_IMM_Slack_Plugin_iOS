@@ -28,7 +28,7 @@
 - (void)testSlackAuthenticateURL
 {
     IMMSlackerClient *immSlackerClient = [IMMSlackerClient sharedInstance];
-    NSString *slackURL = @"https://slack.com/oauth/authorize?client_id=(null)&scope=channels:read&";
+    NSString *slackURL = @"https://slack.com/oauth/authorize?client_id=(null)&scope=channels:read+chat:write:user+chat:write:bot&";
     NSURLRequest *slackRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:slackURL]];
     XCTAssertEqualObjects(slackRequest , [immSlackerClient slackAuthenticateURL:nil]);
 }
