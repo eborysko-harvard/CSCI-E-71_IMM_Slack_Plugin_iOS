@@ -43,16 +43,29 @@ platform :ios do
 #      }]
 #    )
 
+
   end
 
   desc "Run Tests"
   lane :test do
+  
+  xcodebuild(
+		test: true,
+ 	 	scheme: 'IMMSlackerClient',
+  		workspace: 'IMMSlackerClient.xcworkspace',
+  		sdk: 'iphonesimulator',
+  		 CODE_SIGN_IDENTITY: '',
+  		 ONLY_ACTIVE_ARCH: 'NO',
+  		GCC_INSTRUMENT_PROGRAM_FLOW_ARCS: 'YES',
+  		GCC_GENERATE_TEST_COVERAGE_FILES: 'YES',
+)
+
+#duplicate effort but xctool does not seem load the simulator so only some tests go throught
     xctool :test, [
       "--project", "'IMMSlackerClient.xcodeproj'",
-      "--scheme", "'IMMSlackerClient'",
+      "--scheme", "'IMMSlackerClientXCtoolTest'",
       "--configuration", "Debug",
       "--sdk", "iphonesimulator",
-      "--arch", "i386",
       "OBJROOT=./build",
       "ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES"
     ].join(" ")

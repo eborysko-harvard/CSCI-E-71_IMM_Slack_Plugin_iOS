@@ -36,6 +36,8 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 
 -(void) postMessage : (NSString* ) channelID : (NSString* ) message;
 
+-(NSDictionary* ) getChannelList : (BOOL) excludeArchived;
+
 + (id)sharedInstance;
 
 @end
