@@ -49,7 +49,7 @@ platform :ios do
   lane :test do
     xctool :test, [
       "--project", "'IMMSlackerClient.xcodeproj'",
-      "--scheme", "'IMMSlackerClient'",
+      "--scheme", "'IMMSlackerClientXCTool’”,
       "--configuration", "Debug",
       "--sdk", "iphonesimulator",
       "--arch", "i386",
