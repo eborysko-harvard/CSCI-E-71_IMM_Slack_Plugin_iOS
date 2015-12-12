@@ -42,4 +42,3 @@ FOUNDATION_EXPORT const unsigned char IMMSlackerClientVersionString[];
 
 @end
 
-
