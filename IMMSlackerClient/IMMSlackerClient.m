@@ -16,7 +16,7 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
 - (NSURLRequest* ) slackAuthenticateURL:(NSArray* ) options
 {
     
-    NSString *scope = @"channels:read";
+    NSString *scope = @"channels:read+chat:write:user+chat:write:bot";
     if(options)
     {
         NSDictionary *optionsSelected = [options objectAtIndex:0];
@@ -85,38 +85,54 @@ const NSString *slackAPIURL = @"https://slack.com/api/";
     
 }
 
+- (NSDictionary *) getChannelList:(BOOL)excludeArchived
+{
+    NSString *exclude = @"0";
+    if(excludeArchived)
+        exclude = @"1";
+    
+    NSString *restCallString = [NSString stringWithFormat:@"%@/channels.list?token=%@&exclude_archived=%@", slackAPIURL, self.SlackAccessToken, exclude ];
+    
+    return  [self makeRestAPICall: restCallString];
+    
+    
+}
 
 - (NSDictionary *) makeRestAPICall : (NSString*) reqURL
 {
-    @try {
-        __block NSDictionary *response = nil;
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-        
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
-                                                completionHandler:^(NSData *data,
-                                                                    NSURLResponse *resp,
-                                                                    NSError *error) {
-                                                    if(!error)
-                                                        response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    __block NSDictionary *response = nil;
+    __block NSError *responseError = nil;
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:reqURL]
+                                            completionHandler:^(NSData *data,
+                                                                NSURLResponse *resp,
+                                                                NSError *error) {
+                                                if(!error)
+                                                    response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                else
+                                                    responseError = error;
                                                 
-                                                    dispatch_semaphore_signal(semaphore);
-                                                    
-                                                }];
-        [dataTask resume];
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        return response;
+                                                dispatch_semaphore_signal(semaphore);
+                                                
+                                            }];
+    [dataTask resume];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    if (responseError) {
+        NSLog(@"Error in API Call:%@", responseError.description);
+        @throw responseError;
     }
-    @catch (NSError *exception) {
-        @throw exception;
-    }
+    return response;
     
 }
+
+
 
 + (id)sharedInstance
 {
     //This will ensure that only one instance of the IMMSlackerClient object exists
-
+    
     static dispatch_once_t p = 0;
     
     __strong static id _sharedObject = nil;

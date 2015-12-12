@@ -31,7 +31,7 @@ platform :ios do
 
     scan(
         workspace: "IMMSlackerClient.xcworkspace",
-        scheme: "IMMSlackerClient",
+        scheme: "IMMSlackerClientXCTool",
         device: "iPhone 6",
         clean: true,
         code_coverage: true,
@@ -46,8 +46,8 @@ platform :ios do
   lane :test do
 
     xctool :test, [
-      "--project", "'IMMSlackerClient.xcodeproj'",
-      "--scheme", "'IMMSlackerClient'",
+      "--project", "IMMSlackerClient.xcodeproj",
+      "--scheme", "IMMSlackerClientXCTool”,
       "--configuration", "Debug",
       "--sdk", "iphonesimulator",
       "--arch", "i386",
