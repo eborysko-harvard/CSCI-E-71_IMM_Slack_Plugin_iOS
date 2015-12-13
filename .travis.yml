@@ -43,8 +43,8 @@ after_failure:
 
 after_script:
 # Do things anyway after script/test pass or not
-  - echo "After script stage"
-  notifications:
-  slack:
-    rooms:
-      - agilesoftwaredev:${SLACK_BOT_TOKEN}#internationalmixmob
+#  - echo "After script stage"
+#  notifications:
+#  slack:
+#    rooms:
+#      - agilesoftwaredev:${SLACK_BOT_TOKEN}#internationalmixmob
