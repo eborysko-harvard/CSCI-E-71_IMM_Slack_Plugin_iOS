@@ -3,9 +3,6 @@ language: objective-c
 xcode_workspace: IMMSlackerClient.xcworkspace
 xcode_scheme: IMMSlackerClient
 
-#addons:
-#  sauce_connect: true
-
 global:
 before_install:
 # Commands to excecute before install
@@ -22,9 +19,7 @@ install:
   - echo "Install stage"
 #  - npm i
   - echo "END - install stage"
-#  - sudo npm install -g cordova
-#  - sudo npm install -g ios-deploy
-#  - sudo npm install -g ios-sim
+
 
 before_script:
 # Commands to excecute before running tests
@@ -34,10 +29,7 @@ script:
 # Run tests
    - echo "Running tests"
    - fastlane test
-#  - echo "Starting build"
-#  - npm run build-ios
-#  - cd TestCIiOS
-#  - cordova build ios
+
 
 after_success:
 # You can do thing after success
