@@ -25,9 +25,9 @@ platform :ios do
 
   desc "Setup and Run Tests"
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV['KEYCHAIN_NAME'] = "TempKeychain2.keychain"
 
-    increment_build_number
+#    increment_build_number
 
     scan(
         workspace: "IMMSlackerClient.xcworkspace",
@@ -35,8 +35,10 @@ platform :ios do
         device: "iPhone 6",
         clean: true,
         code_coverage: true,
+        configuration: "Debug",
+        xcargs: "ENABLE_BITCODE=NO",
         output_directory: "./build",
-        slack_url: "https://hooks.slack.com/services/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",
+        slack_url: ENV['SLACK_URL'],
         slack_channel: "internationalmixmob"
     )
 
@@ -52,7 +54,7 @@ platform :ios do
       "--sdk", "iphonesimulator",
       "--arch", "i386",
       "OBJROOT=./build",
-      "ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES"
+      "ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES ENABLE_BITCODE=NO"
     ].join(" ")
 
     gcovr(
@@ -75,10 +77,16 @@ platform :ios do
   desc "Submit a new Beta Build"
   desc "This will also make sure the profile is up to date"
   lane :build do
+    sh "scripts/decrypt-files.sh"
+    import_certificates
     cert
-    sigh(force: true)
+    sigh(
+      force: true,
+      skip_install: true,
+      filename: 'fastlane/profiles/educscie71immapp_AppStore.mobileprovision'
+    )
 
-    sh "./fl_build.sh"
+    sh "./fl-framework-build.sh"
 
   end
 
@@ -108,6 +116,32 @@ platform :ios do
     #   success: false
     # )
   end
+
+  # SHARED FUNCTIONS
+  def import_certificates
+    return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
+
+    create_keychain(
+      name: ENV["KEYCHAIN_NAME"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: ENV["KEY_PASSWORD"]
+    )
+
+    import_certificate(
+      certificate_path: "fastlane/certs/ios_distribution.p12",
+      certificate_password: ENV['ENCRYPTION_SECRET'],
+      keychain_name: ENV["KEYCHAIN_NAME"]
+    )
+
+  #  import_certificate(
+  #    certificate_path: "fastlane/certs/ios_distribution.cer",
+  #    keychain_name: ENV["KEYCHAIN_NAME"]
+  #  )
+  end
+
 end
 
 
