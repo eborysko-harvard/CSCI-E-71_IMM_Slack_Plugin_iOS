@@ -18,18 +18,19 @@ else
 export ALREADYINVOKED="true"
 
 # make sure the output directory exists
+echo "Creating Universal Build Output folder"
 #mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
 mkdir -p ".${UNIVERSAL_OUTPUTFOLDER}"
 
 echo "Building for iPhoneSimulator"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" clean build TEST_AFTER_BUILD=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES ENABLE_BITCODE=YES
+xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" clean build TEST_AFTER_BUILD=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES ENABLE_BITCODE=YES OTHER_CFLAGS='-fembed-bitcode' | xcpretty
 
-echo "Building for iPhone"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuration ${CONFIGURATION} -sdk iphoneos9.1 ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" clean build ENABLE_BITCODE=YES
+#echo "Building for iPhone"
+xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${SCHEME_NAME}" -configuration ${CONFIGURATION} -sdk iphoneos9.1 ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" clean build ENABLE_BITCODE=YES OTHER_CFLAGS='-fembed-bitcode' | xcpretty
 
 
 # Step 1. Copy the framework structure (from iphoneos build) to the universal folder
-#echo "Copying to output folder"
+echo "Copying to output folder"
 cp -R ".${BUILD_DIR}/${CONFIGURATION}-iphoneos/" ".${UNIVERSAL_OUTPUTFOLDER}"
 
 echo ".${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${EXECUTABLE_PATH}"
